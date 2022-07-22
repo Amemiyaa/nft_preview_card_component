@@ -29,7 +29,8 @@ body {
 
 main {
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,6 +40,7 @@ main {
 /*  */
 
 .card {
+  position: relative;
   width: 20rem;
   margin: auto;
   text-align: center;
@@ -48,9 +50,56 @@ main {
 
 /* CARD HEADER */
 
+.card-header h2 {
+  display: flex;
+  width: max-content;
+  justify-content: start;
+  text-align: left;
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+
+.card-header h2:hover {
+  cursor: pointer;
+  color: var(--cyan);
+}
+
+.imgContainer {
+  position: relative;
+  display: inline-block;
+}
+
 .card-header img {
   margin-top: 1rem;
+}
+
+.equilibrium {
+  display: block;
+  margin: auto;
   width: 18rem;
+}
+
+.hiddenContent {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: hsla(178, 100%, 50%, 0.50);
+  margin-top: 1rem;
+}
+
+.hiddenContent img {
+  width: 3rem;
+  position: relative;
+  top: 6.5rem;
+}
+
+.imgContainer:hover .hiddenContent {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .card-header p {
@@ -65,24 +114,41 @@ main {
 .card-main {
   display: flex;
   flex-direction: row;
-  justify-content: space-around
-}
-
-.price::before {
-  content: '';
-  background-image: url(./images/icon-ethereum.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-
+  justify-content: space-between
 }
 
 .price {
   color: var(--cyan);
+  position: relative;
+  margin-left: 2rem;
+}
+
+.price::before {
+  content: '';
+  background: url("./images/icon-ethereum.svg") no-repeat 20% 20%;
+  position: absolute;
+  align-items: center;
+  width: 1rem;
+  height: 2rem;
+  left: -1.2rem;
 }
 
 .time {
   color: var(--soft_blue);
+  position: relative;
+  margin-right: 1rem;
 }
+
+.time::before {
+  content: '';
+  background: url("./images/icon-clock.svg") no-repeat 20% 20%;
+  position: absolute;
+  align-items: center;
+  width: 1rem;
+  height: 2rem;
+  left: -1.5rem;
+}
+
 
 /* LINE */
 
@@ -110,4 +176,19 @@ hr {
 .card-footer p {
   font-size: 1rem;
   color: var(--soft_blue);
+}
+
+.card-footer p span:hover {
+  cursor: pointer;
+  color: var(--cyan);
+}
+
+/* FOOTER */
+
+.attribution {
+  font-size: 11px; text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
 }
